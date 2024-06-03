@@ -1,52 +1,53 @@
+if game.PlaceId == 7449423635 then
+	local Library = loadstring(Game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wizard"))()
 
-local Library = loadstring(Game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wizard"))()
+	local win = Library:NewWindow("")
 
-local win = Library:NewWindow("")
+	local sec = win:NewSection("")
 
-local sec = win:NewSection("")
+	local function activateAbility()
+		local ReplicatedStorage = game:GetService("ReplicatedStorage")
+		local commE = ReplicatedStorage:FindFirstChild("Remotes") and ReplicatedStorage.Remotes:FindFirstChild("CommE")
+		
+		if commE then
+			commE:FireServer("ActivateAbility")
+			print("Ability activated")
+		else
+			print("CommE not found")
+		end
+	end
 
-local function activateAbility()
-    local ReplicatedStorage = game:GetService("ReplicatedStorage")
-    local commE = ReplicatedStorage:FindFirstChild("Remotes") and ReplicatedStorage.Remotes:FindFirstChild("CommE")
-    
-    if commE then
-        commE:FireServer("ActivateAbility")
-        print("Ability activated")
-    else
-        print("CommE not found")
-    end
+	local function onClick()
+		local Players = game:GetService("Players")
+		local character = Players.LocalPlayer.Character
+
+		if character and character:FindFirstChild("Head") then
+			character.Head:Destroy()
+			print("Head destroyed")
+		else
+			print("Head not found")
+		end
+	end
+
+	local function kickPlayer()
+		game:GetService("Players").LocalPlayer:Kick("Lol")
+	end
+
+	local function tp(id)
+		game:GetService("TeleportService"):TeleportToPlaceInstance(7449423635, id, game:GetService("Players").LocalPlayer)
+	end
+
+	sec:CreateButton("Race Skill", function()
+		activateAbility()
+	end)
+	sec:CreateButton("Reset", function()
+		onClick()
+	end)
+	sec:CreateButton("Kick", function()
+		kickPlayer()
+	end)
+
+	sec:CreateTextbox("Place Id", function(id)
+		tp(id)
+	end)
 end
-
-local function onClick()
-    local Players = game:GetService("Players")
-    local character = Players.LocalPlayer.Character
-
-    if character and character:FindFirstChild("Head") then
-        character.Head:Destroy()
-        print("Head destroyed")
-    else
-        print("Head not found")
-    end
-end
-
-local function kickPlayer()
-	game:GetService("Players").LocalPlayer:Kick("Lol")
-end
-
-local function tp(id)
-	game:GetService("TeleportService"):TeleportToPlaceInstance(7449423635, id, game:GetService("Players").LocalPlayer)
-end
-
-sec:CreateButton("Race Skill", function()
-	activateAbility()
-end)
-sec:CreateButton("Reset", function()
-	onClick()
-end)
-sec:CreateButton("Kick", function()
-	kickPlayer()
-end)
-
-sec:CreateTextbox("Place Id", function(id)
-    tp(id)
-end)
