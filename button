@@ -1,0 +1,53 @@
+if game.PlaceId == 7449423635 then
+	local existingGui = game:GetService("CoreGui"):FindFirstChild("mamao")
+    if existingGui then
+        existingGui:Destroy()
+    end
+    local gui = Instance.new("ScreenGui")
+	gui.Name = "mamao"
+    gui.Parent = game:GetService("CoreGui")
+
+    -- Skill button
+    local skillButton = Instance.new("TextButton")
+    skillButton.Size = UDim2.new(0, 200, 0, 50) -- Set size
+    skillButton.Position = UDim2.new(1, -250, 0.35, -25) -- Set position with space between the buttons
+    skillButton.Text = "Race Skill" -- Set button text
+    skillButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0) -- Set button color to red
+    skillButton.TextColor3 = Color3.fromRGB(255, 255, 255) -- Set text color to white
+	skillButton.Parent = gui -- Set parent
+
+    local function activateAbility()
+        local ReplicatedStorage = game:GetService("ReplicatedStorage")
+        local commE = ReplicatedStorage:FindFirstChild("Remotes") and ReplicatedStorage.Remotes:FindFirstChild("CommE")
+        
+        if commE then
+            commE:FireServer("ActivateAbility")
+            print("Ability activated")
+        else
+            print("CommE not found")
+        end
+    end
+
+    skillButton.MouseButton1Click:Connect(activateAbility)
+
+    -- Click me button
+    local button = Instance.new("TextButton")
+    button.Size = UDim2.new(0, 200, 0, 50) -- Set size
+    button.Position = UDim2.new(1, -250, 0.5, -25) -- Set position
+    button.Text = "Reset" -- Set button text
+    button.Parent = gui -- Set parent
+
+    local function onClick()
+        local Players = game:GetService("Players")
+        local character = Players.LocalPlayer.Character
+        
+        if character and character:FindFirstChild("Head") then
+            character.Head:Destroy()
+            print("Head destroyed")
+        else
+            print("Head not found")
+        end
+    end
+
+    button.MouseButton1Click:Connect(onClick)
+end
