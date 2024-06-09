@@ -1,4 +1,3 @@
-repeat task.wait() until game:IsLoaded()
 if game.PlaceId == 2753915549 then
 	loadstring(game:HttpGet("https://pastebin.com/raw/fuqe6kTx"))()
 elseif game.PlaceId == 4442272183 then
