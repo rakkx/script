@@ -30,7 +30,7 @@ if game.PlaceId == 7449423635 then
 	end
 
 	local function kickPlayer()
-		game:GetService("Players").LocalPlayer:Kick("Lol")
+		game:Shutdown()
 	end
 
 	local function tp(id)
@@ -43,7 +43,7 @@ if game.PlaceId == 7449423635 then
 	sec:CreateButton("Reset", function()
 		onClick()
 	end)
-	sec:CreateButton("Kick", function()
+	sec:CreateButton("Leave Game", function()
 		kickPlayer()
 	end)
 
