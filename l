@@ -13,7 +13,7 @@ elseif game.PlaceId == 17017769292 then
 		else
 			setfpscap(10)
 	end
-elseif game.PlaceId == 17017769292 then
+elseif game.PlaceId == 17018663967 then
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/buang5516/buanghub/main/BUANGHUB.lua"))()
 	if game:GetService("Players").LocalPlayer.Name == "BoBoyPiLaYMe" then
 			setfpscap(15)
