@@ -42,10 +42,12 @@ spawn(loadScripts)
 
 -- Set FPS cap based on player name
 spawn(function()
-    local localPlayer = game:GetService("Players").LocalPlayer
-    if localPlayer and localPlayer.Name == "BoBoyPiLaYMe" then
-        setfpscap(15)
-    else
-        setfpscap(10)
-    end
+    if PlaceId == 17017769292 or PlaceId == 17018663967 then
+		local localPlayer = game:GetService("Players").LocalPlayer
+		if localPlayer and localPlayer.Name == "BoBoyPiLaYMe" then
+			setfpscap(15)
+		else
+			setfpscap(10)
+		end
+	end
 end)
