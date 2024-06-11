@@ -46,6 +46,7 @@ spawn(function()
 		local localPlayer = game:GetService("Players").LocalPlayer
 		if localPlayer and localPlayer.Name == "BoBoyPiLaYMe" then
 			setfpscap(15)
+			game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, false)
 		else
 			setfpscap(10)
 		end
