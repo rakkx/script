@@ -91,7 +91,9 @@ spawn(function()
         local localPlayer = game:GetService("Players").LocalPlayer
         if localPlayer and localPlayer.Name == "BoBoyPiLaYMe" then
             setfpscap(15)
-			spawn(all)
+			if PlaceId == 17018663967 then
+				spawn(all)
+			end
         else
             setfpscap(10)
         end
